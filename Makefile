@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aperin <aperin@student.s19.be>             +#+  +:+       +#+         #
+#    By: aperin <aperin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 08:50:00 by aperin            #+#    #+#              #
-#    Updated: 2022/10/12 08:51:59 by aperin           ###   ########.fr        #
+#    Updated: 2022/10/14 12:43:10 by aperin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= ft_printf.c
+SRCS	= ft_printf.c utils.c
 
 OBJS	= $(SRCS:.c=.o)
 

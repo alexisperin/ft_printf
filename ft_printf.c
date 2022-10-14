@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:48:30 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/14 12:33:56 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/14 12:45:28 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,10 @@ void	print_config(va_list ap, t_config *config)
 		config->len += ft_putnbr_base(va_arg(ap, int), DECIMAL);
 	else if (config->conversion == 'u')
 		config->len += ft_putnbr_base((unsigned) va_arg(ap, int), DECIMAL);
+	else if (config->conversion == 'x')
+		config->len += ft_putnbr_base(va_arg(ap, int), HEXA_LOWER);
+	else if (config->conversion == 'X')
+		config->len += ft_putnbr_base(va_arg(ap, int), HEXA_UPPER);
+	else if (config->conversion == '%')
+		config->len += ft_putchar('%');
 }

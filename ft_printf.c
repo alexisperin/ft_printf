@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:48:30 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/14 12:45:28 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/14 16:08:18 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,19 @@ void	print_config(va_list ap, t_config *config)
 	else if (config->conversion == 's')
 		config->len += ft_putstr(va_arg(ap, char *));
 	else if (config->conversion == 'p')
-		return ; // TO DO !!!
+	{
+		write(1, "0x", 2);
+		config->len += 2;
+		config->len += ft_putptr(va_arg(ap, unsigned long), 0);
+	}
 	else if (config->conversion == 'd' || config->conversion == 'i')
 		config->len += ft_putnbr_base(va_arg(ap, int), DECIMAL);
 	else if (config->conversion == 'u')
-		config->len += ft_putnbr_base((unsigned) va_arg(ap, int), DECIMAL);
+		config->len += ft_putnbr_base(va_arg(ap, unsigned), DECIMAL);
 	else if (config->conversion == 'x')
-		config->len += ft_putnbr_base(va_arg(ap, int), HEXA_LOWER);
+		config->len += ft_putnbr_base(va_arg(ap, unsigned), HEXA_LOWER);
 	else if (config->conversion == 'X')
-		config->len += ft_putnbr_base(va_arg(ap, int), HEXA_UPPER);
+		config->len += ft_putnbr_base(va_arg(ap, unsigned), HEXA_UPPER);
 	else if (config->conversion == '%')
 		config->len += ft_putchar('%');
 }

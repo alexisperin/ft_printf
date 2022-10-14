@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 09:02:23 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/14 12:26:43 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/14 16:04:43 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int	ft_printf(const char *format, ...);
 int	ft_putchar(char c);
 int	ft_putstr(char *str);
 int	ft_putnbr_base(long nbr, char *base);
+int	ft_putptr(unsigned long ptr, int ret);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:34:18 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/14 12:29:33 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/14 16:06:00 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	ft_putstr(char *str)
 {
 	int	len;
 
+	if (!str)
+		str = "(null)";
 	len = 0;
 	while (str[len])
 		len++;
@@ -29,10 +31,10 @@ int	ft_putstr(char *str)
 	return (len);
 }
 
-void	ft_putnbr_base_recursive(long nbr, char *base, int base_len, int *ret)
+static void	ft_putnbr_base_rec(long nbr, char *base, int base_len, int *ret)
 {
 	if (nbr >= base_len)
-		ft_putnbr_base_recursive(nbr / base_len, base, base_len, ret);
+		ft_putnbr_base_rec(nbr / base_len, base, base_len, ret);
 	write(1, &base[nbr % base_len], 1);
 	(*ret)++;
 }
@@ -52,6 +54,14 @@ int	ft_putnbr_base(long nbr, char *base)
 		nbr = -nbr;
 		ret++;
 	}
-	ft_putnbr_base_recursive(nbr, base, base_len, &ret);
+	ft_putnbr_base_rec(nbr, base, base_len, &ret);
 	return (ret);
+}
+
+int	ft_putptr(unsigned long ptr, int ret)
+{
+	if (ptr >= 16)
+		ret += ft_putptr(ptr / 16, 0);
+	write(1, &HEXA_LOWER[ptr % 16], 1);
+	return (ret + 1);
 }

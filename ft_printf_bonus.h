@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 09:02:23 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/14 17:34:29 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/15 13:27:35 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_config
 	int		hashtag;
 	int		space;
 	int		plus;
-	int		i;
 	int		len;
 }			t_config;
 

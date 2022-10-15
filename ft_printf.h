@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aperin <aperin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 09:02:23 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/14 16:04:43 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/15 13:27:47 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 typedef struct s_config
 {
 	char	conversion;
-	int		i;
 	int		len;
 }			t_config;
 

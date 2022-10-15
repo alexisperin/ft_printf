@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aperin <aperin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:48:30 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/14 16:08:18 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/15 13:16:53 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	parse(const char *str, t_config *config);
+int		parse(const char *str, t_config *config);
 void	print_config(va_list ap, t_config *config);
 
 int	ft_printf(const char *str, ...)
@@ -34,22 +34,20 @@ int	ft_printf(const char *str, ...)
 		}
 		if (str[i] == '%')
 		{
-			parse(&str[i], &config);
+			i += parse(&str[i], &config);
 			print_config(ap, &config);
-			i += config.i;
 		}
 	}
 	va_end(ap);
 	return (config.len);
 }
 
-void	parse(const char *str, t_config *config)
+int	parse(const char *str, t_config *config)
 {
-	config->i = 1;
-	if (!str[config->i])
-		return ;
-	config->conversion = str[config->i];
-	config->i++;
+	if (!str[1])
+		return (1);
+	config->conversion = str[1];
+	return (2);
 }
 
 void	print_config(va_list ap, t_config *config)

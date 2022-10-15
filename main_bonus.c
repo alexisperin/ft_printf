@@ -6,17 +6,19 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 16:42:07 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/14 17:17:51 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/15 14:03:51 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 int	main(void)
 {
-	printf("%#x\n", 20);
-	ft_printf("%#X\n", 20);
-	printf("%+d\n", 24525);
-	printf("%+i\n", 24525);
+	int	n;
+
+	n = printf("%#x\n", 1);
+	printf("%d\n", n);
+	n = ft_printf("%#x\n", 1);
+	printf("%d\n", n);
 }

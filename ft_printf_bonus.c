@@ -6,15 +6,15 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:48:30 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/14 17:33:54 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/15 13:49:42 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-void	parse(const char *str, t_config *config);
+int		parse(const char *str, t_config *config);
 void	print_config(va_list ap, t_config *config);
-int		conversion_type(char c);
+int		is_flag(char c);
 
 int	ft_printf(const char *str, ...)
 {
@@ -35,41 +35,42 @@ int	ft_printf(const char *str, ...)
 		}
 		if (str[i] == '%')
 		{
-			parse(&str[i], &config);
+			i += parse(&str[i], &config);
 			print_config(ap, &config);
-			i += config.i;
 		}
 	}
 	va_end(ap);
 	return (config.len);
 }
 
-void	parse(const char *str, t_config *config)
+int	parse(const char *str, t_config *config)
 {
-	config->i = 1;
+	int	i;
+
+	i = 1;
 	config->hashtag = 0;
 	config->space = 0;
 	config->plus = 0;
-	if (!str[config->i])
-		return ;
-	while (str[config->i] && !conversion_type(str[config->i]))
+	if (!str[i])
+		return (i);
+	while (is_flag(str[i]))
 	{
-		if (str[config->i] == '#')
+		if (str[i] == '#')
 			config->hashtag = 1;
-		else if (str[config->i] == ' ')
+		else if (str[i] == ' ')
 			config->space = 1;
-		else if (str[config->i] == '+')
+		else if (str[i] == '+')
 			config->plus = 1;
-		config->i++;
+		i++;
 	}
-	config->conversion = str[config->i];
-	config->i++;
+	config->conversion = str[i];
+	i++;
+	return (i);
 }
 
-int	conversion_type(char c)
+int	is_flag(char c)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd'
-		|| c == 'i' || c == 'x' || c == 'X' || c == '%')
+	if (c == '#' || c == ' ' || c == '+')
 		return (1);
 	return (0);
 }

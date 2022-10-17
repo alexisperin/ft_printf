@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aperin <aperin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 17:42:05 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/14 15:44:03 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/16 16:08:25 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(void)
 	n = ft_printf("%X\n", 10);
 	printf("%d\n", n);
 	p = &n;
-	printf("%p\n", NULL);
+	printf("%p\n", p);
 	ft_printf("%p\n", p);
+	printf("%p\n", NULL);
+	ft_printf("%p\n", NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:48:30 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/15 13:49:42 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/17 09:13:50 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	print_config(va_list ap, t_config *config)
 		ft_putstr(va_arg(ap, char *), config);
 	else if (config->conversion == 'p')
 	{
-		ft_put_hexa_prefix(1, 0, config);
+		ft_put_hexa_prefix(config);
 		ft_putptr(va_arg(ap, unsigned long), config);
 	}
 	else if (config->conversion == 'd' || config->conversion == 'i')
@@ -91,15 +91,9 @@ void	print_config(va_list ap, t_config *config)
 	else if (config->conversion == 'u')
 		ft_putnbr_base(va_arg(ap, unsigned), DECIMAL, config);
 	else if (config->conversion == 'x')
-	{
-		ft_put_hexa_prefix(config->hashtag, 0, config);
 		ft_putnbr_base(va_arg(ap, unsigned), HEXA_LOWER, config);
-	}
 	else if (config->conversion == 'X')
-	{
-		ft_put_hexa_prefix(config->hashtag, 1, config);
 		ft_putnbr_base(va_arg(ap, unsigned), HEXA_UPPER, config);
-	}
 	else if (config->conversion == '%')
 		ft_putchar('%', config);
 }

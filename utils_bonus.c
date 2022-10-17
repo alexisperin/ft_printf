@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:34:18 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/14 17:34:56 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/16 19:22:39 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ void	ft_putnbr_base(long nbr, char *base, t_config *config)
 		nbr = -nbr;
 		config->len++;
 	}
+	else if (config->conversion == 'd' || config->conversion == 'i')
+		ft_put_space_or_plus(config);
+	else if (config->hashtag && nbr != 0)
+		ft_put_hexa_prefix(config);
 	ft_putnbr_base_rec(nbr, base, len, config);
 }
 

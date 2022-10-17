@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 09:02:23 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/15 13:27:35 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/16 19:23:09 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_putchar(char c, t_config *config);
 void	ft_putstr(char *str, t_config *config);
 void	ft_putnbr_base(long nbr, char *base, t_config *config);
 void	ft_putptr(unsigned long ptr, t_config *config);
-void	ft_put_hexa_prefix(int to_print, int upper, t_config *config);
+void	ft_put_hexa_prefix(t_config *config);
+void	ft_put_space_or_plus(t_config *config);
 
 #endif

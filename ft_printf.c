@@ -6,13 +6,14 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:48:30 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/15 13:16:53 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/17 09:15:59 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 int		parse(const char *str, t_config *config);
+int		is_conversion(char c);
 void	print_config(va_list ap, t_config *config);
 
 int	ft_printf(const char *str, ...)
@@ -44,10 +45,20 @@ int	ft_printf(const char *str, ...)
 
 int	parse(const char *str, t_config *config)
 {
-	if (!str[1])
+	if (is_conversion(str[1]))
+	{
+		config->conversion = str[1];
+		return (2);
+	}
+	return (1);
+}
+
+int	is_conversion(char c)
+{
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
+		|| c == 'x' || c == 'X' || c == '%')
 		return (1);
-	config->conversion = str[1];
-	return (2);
+	return (0);
 }
 
 void	print_config(va_list ap, t_config *config)

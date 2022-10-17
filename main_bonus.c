@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 16:42:07 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/15 14:03:51 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/17 09:04:24 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,5 @@
 
 int	main(void)
 {
-	int	n;
-
-	n = printf("%#x\n", 1);
-	printf("%d\n", n);
-	n = ft_printf("%#x\n", 1);
-	printf("%d\n", n);
+	printf("%#%\n");
 }

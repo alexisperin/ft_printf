@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
+/*   By: aperin <aperin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:48:30 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/17 09:13:50 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/17 11:08:24 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
 int		parse(const char *str, t_config *config);
+int		is_conversion(char c);
 void	print_config(va_list ap, t_config *config);
-int		is_flag(char c);
 
 int	ft_printf(const char *str, ...)
 {
@@ -45,32 +45,19 @@ int	ft_printf(const char *str, ...)
 
 int	parse(const char *str, t_config *config)
 {
-	int	i;
-
-	i = 1;
-	config->hashtag = 0;
-	config->space = 0;
-	config->plus = 0;
-	if (!str[i])
-		return (i);
-	while (is_flag(str[i]))
+	config->conversion = 0;
+	if (is_conversion(str[1]))
 	{
-		if (str[i] == '#')
-			config->hashtag = 1;
-		else if (str[i] == ' ')
-			config->space = 1;
-		else if (str[i] == '+')
-			config->plus = 1;
-		i++;
+		config->conversion = str[1];
+		return (2);
 	}
-	config->conversion = str[i];
-	i++;
-	return (i);
+	return (1);
 }
 
-int	is_flag(char c)
+int	is_conversion(char c)
 {
-	if (c == '#' || c == ' ' || c == '+')
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
+		|| c == 'x' || c == 'X' || c == '%')
 		return (1);
 	return (0);
 }
@@ -78,22 +65,23 @@ int	is_flag(char c)
 void	print_config(va_list ap, t_config *config)
 {
 	if (config->conversion == 'c')
-		ft_putchar(va_arg(ap, int), config);
+		config->len += ft_putchar(va_arg(ap, int));
 	else if (config->conversion == 's')
-		ft_putstr(va_arg(ap, char *), config);
+		config->len += ft_putstr(va_arg(ap, char *));
 	else if (config->conversion == 'p')
 	{
-		ft_put_hexa_prefix(config);
-		ft_putptr(va_arg(ap, unsigned long), config);
+		write(1, "0x", 2);
+		config->len += 2;
+		config->len += ft_putptr(va_arg(ap, unsigned long), 0);
 	}
 	else if (config->conversion == 'd' || config->conversion == 'i')
-		ft_putnbr_base(va_arg(ap, int), DECIMAL, config);
+		config->len += ft_putnbr_base(va_arg(ap, int), DECIMAL);
 	else if (config->conversion == 'u')
-		ft_putnbr_base(va_arg(ap, unsigned), DECIMAL, config);
+		config->len += ft_putnbr_base(va_arg(ap, unsigned), DECIMAL);
 	else if (config->conversion == 'x')
-		ft_putnbr_base(va_arg(ap, unsigned), HEXA_LOWER, config);
+		config->len += ft_putnbr_base(va_arg(ap, unsigned), HEXA_LOWER);
 	else if (config->conversion == 'X')
-		ft_putnbr_base(va_arg(ap, unsigned), HEXA_UPPER, config);
+		config->len += ft_putnbr_base(va_arg(ap, unsigned), HEXA_UPPER);
 	else if (config->conversion == '%')
-		ft_putchar('%', config);
+		config->len += ft_putchar('%');
 }

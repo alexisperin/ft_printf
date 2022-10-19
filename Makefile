@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aperin <aperin@student.42.fr>              +#+  +:+       +#+         #
+#    By: aperin <aperin@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 08:50:00 by aperin            #+#    #+#              #
-#    Updated: 2022/10/17 11:20:42 by aperin           ###   ########.fr        #
+#    Updated: 2022/10/19 08:36:34 by aperin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= srcs/ft_printf.c srcs/utils.c
+SRCS	= ft_printf.c utils.c
 
-B_SRCS	= bonus/ft_printf_bonus.c bonus/utils_bonus.c bonus/utils2_bonus.c
+B_SRCS	= ft_printf_bonus.c utils_bonus.c utils2_bonus.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -21,7 +21,7 @@ B_OBJS	= $(B_SRCS:.c=.o)
 NAME	= libftprintf.a
 
 %.o : %.c
-			gcc -Wall -Wextra -Werror -I includes/ -c $< -o ${<:.c=.o}
+			gcc -Wall -Wextra -Werror -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
 			ar -rcs $(NAME) $(OBJS)

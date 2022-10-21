@@ -6,13 +6,13 @@
 /*   By: aperin <aperin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:48:30 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/21 09:51:23 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/21 10:48:04 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-static void	print_config(va_list ap, t_config *config)
+static int	print_config(va_list ap, t_config *config)
 {
 	if (config->conversion == 'c')
 		ft_putchar(va_arg(ap, int), config);
@@ -33,6 +33,9 @@ static void	print_config(va_list ap, t_config *config)
 		ft_putnbr_base(va_arg(ap, unsigned), HEXA_UPPER, config);
 	else if (config->conversion == '%')
 		ft_putchar('%', config);
+	else
+		return (0);
+	return (1);
 }
 
 static int	is_conversion(char c)
@@ -93,7 +96,8 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i += parse(&str[i], &config);
-			print_config(ap, &config);
+			if (!print_config(ap, &config))
+				break ;
 		}
 	}
 	va_end(ap);

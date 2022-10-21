@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
+/*   By: aperin <aperin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 17:42:05 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/21 08:59:26 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/21 11:58:58 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "ft_printf.h"
+#include "includes/ft_printf.h"
 
 int	main(void)
 {
-	ft_printf(" -> %d\n", ft_printf("% +d %#x", 524524, -25442542));
-	printf(" -> %d\n", printf("% +d %#x", 524524, -25442542));
+	ft_printf(" -> %d\n", ft_printf("%p %s %#x", 0, "rgwgr", 3543));
+	printf(" -> %d\n", printf("%p %s %#x", 0, "rgwgr", 3543));
 }

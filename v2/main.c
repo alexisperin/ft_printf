@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 17:42:05 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/20 18:25:51 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/21 08:59:26 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 int	main(void)
 {
-	printf(" -> %d\n", ft_printf("%s %x", "srgrrzgrzg", -25442542));
-	printf(" -> %d\n", printf("%s %x", "srgrrzgrzg", -25442542));
-	printf((void *)0);
+	ft_printf(" -> %d\n", ft_printf("% +d %#x", 524524, -25442542));
+	printf(" -> %d\n", printf("% +d %#x", 524524, -25442542));
 }

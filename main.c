@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 17:42:05 by aperin            #+#    #+#             */
-/*   Updated: 2022/10/21 11:58:58 by aperin           ###   ########.fr       */
+/*   Updated: 2022/10/21 14:38:01 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 int	main(void)
 {
-	ft_printf(" -> %d\n", ft_printf("%p %s %#x", 0, "rgwgr", 3543));
-	printf(" -> %d\n", printf("%p %s %#x", 0, "rgwgr", 3543));
+	ft_printf(" -> %d\n", ft_printf("%s", 3543));
+	printf(" -> %d\n", printf("%s", 3543));
+	printf(0);
 }
